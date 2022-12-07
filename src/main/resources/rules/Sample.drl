@@ -75,3 +75,101 @@ rule "Q3"
 	String ta = window.askUser(td.getQuestion(),td.getAnswers());
 	insert(new Answer(td,ta));
 end
+
+rule "Q4"
+	when Answer(
+		d:dialog, d.getQuestion == "What could you use a break from?"
+		&& getDialogAnswer() == "Work"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"What line of work are you in?",
+		new String[] {"Business","Retail"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q6"
+	when Answer(
+		d:dialog, d.getQuestion == "Are you self-destructive?"
+		&& getDialogAnswer() == "Yes"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Mentally or physically",
+		new String[] {"Mentally","Physically"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q7"
+	when Answer(
+		d:dialog, d.getQuestion == "Are you self-destructive?"
+		&& getDialogAnswer() == "No"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Are you social?",
+		new String[] {"No","Yes","I prefer animals over people"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q8"
+	when Answer(
+		d:dialog, d.getQuestion == "Are you social?"
+		&& getDialogAnswer() == "No"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"By choice?",
+		new String[] {"No, most of my friends have moved away.","Yes. I can't stand pathetic life forms"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q9"
+	when Answer(
+		d:dialog, d.getQuestion == "By choice?"
+		&& getDialogAnswer() == "Yes. I can't stand pathetic life forms"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"What color is your lightsaber?",
+		new String[] {"Blue","Red"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q9_ilum"
+	when Answer(
+		d:dialog, d.getQuestion == "What color is your lightsaber?"
+		&& getDialogAnswer() == "Blue"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destinations is:\nILUM",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q9_jakku"
+	when Answer(
+		d:dialog, d.getQuestion == "What color is your lightsaber?"
+		&& getDialogAnswer() == "Red"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destinations is:\nJAKKU",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
