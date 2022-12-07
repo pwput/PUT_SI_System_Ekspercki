@@ -1,20 +1,59 @@
 package com.sample
  
-import com.sample.DroolsTest.Message;
- 
-rule "Hello World"
-    when
-        m : Message( status == Message.HELLO, myMessage : message )
-    then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
-        update( m );
+import com.sample.Window;
+
+global Window window;
+
+declare Dialog
+	question: String
+	firstAnswer: String
+	secondAnswer: String
 end
 
-rule "GoodBye"
-    when
-        Message( status == Message.GOODBYE, myMessage : message )
-    then
-        System.out.println( myMessage );
+
+declare Answer
+	dialog: Dialog
+	dialogAnswer: String
 end
+
+rule "Init"
+	when
+	then
+		insert(
+		new Dialog(
+		"Search your feelings. Why are you traveling",
+		"Vacation? Now that's a word I haven't heard in a long, long time.",
+		"I just want to teleport off this rock"
+		));
+		window = new Window();
+		insert(window);
+end
+
+rule "Q1"
+	when a: Dialog()
+	then 
+		String odp = window.askUser(a.getQuestion(),a.getFirstAnswer(),a.getSecondAnswer());
+		Answer ans = new Answer(a, odp);
+		insert(ans);
+end
+
+rule "Q2"
+	when Answer(
+	d: dialog, 
+	d.getQuestion() == "Search your feelings. Why are you traveling"
+	&& getDialogAnswer() == d.getFirstAnswer()
+	);
+	then
+	Dialog td = new Dialog(
+	"What could you use a break from?",
+	"The same faces at the cantina",
+	"The city"
+	);
+	String ta = window.askUser(
+	td.getQuestion(),
+	td.getFirstAnswer(),
+	td.getSecondAnswer()
+	);
+	Answer a = new Answer (td,ta);
+	insert(a);
+	end
