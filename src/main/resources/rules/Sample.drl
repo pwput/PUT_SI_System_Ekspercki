@@ -84,7 +84,7 @@ rule "Q4"
 	then
 	Dialog tempDialog = new Dialog(
 		"What line of work are you in?",
-		new String[] {"Business","Retail"}
+		new String[] {"Business","Retail","Creative field"}
 	);
 	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
 	insert(new Answer(tempDialog,userAnswer));
@@ -97,7 +97,7 @@ rule "Q6"
 	)
 	then
 	Dialog tempDialog = new Dialog(
-		"Mentally or physically",
+		"Mentally or physically?",
 		new String[] {"Mentally","Physically"}
 	);
 	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
@@ -167,7 +167,617 @@ rule "Q9_jakku"
 	)
 	then
 	Dialog tempDialog = new Dialog(
-		"Your destinations is:\nJAKKU",
+		"Your destination is:\nJAKKU",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q11"
+	when Answer(
+		d:dialog, d.getQuestion == "Are you social?"
+		&& getDialogAnswer() == "Yes"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Describe your friends.",
+		new String[] {"A bunch of scruffy-lookin' nrefherders", "A ton of party animals. Mos Einsley is old news.", "Tight-knit. i'd do anything for them."}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q11_MALASTARE"
+	when Answer(
+		d:dialog, d.getQuestion == "Describe your friends."
+		&& getDialogAnswer() == "A bunch of scruffy-lookin' nrefherders"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MALASTARE",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q10"
+	when Answer(
+		d:dialog, d.getQuestion == "By choice?"
+		&& getDialogAnswer() == "No, most of my friends have moved away."
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Aw. QQ. Stop puting and go find them!",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q10_5"
+	when Answer(
+		d:dialog, d.getQuestion == 		"Aw. QQ. Stop puting and go find them!"
+		&& getDialogAnswer() == "OK"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Describe your friends.",
+		new String[] {"A bunch of scruffy-lookin' nrefherders", "A ton of party animals. Mos Einsley is old news.", "Tight-knit. i'd do anything for them."}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q13"
+	when Answer(
+		d:dialog, d.getQuestion == "Describe your friends."
+		&& getDialogAnswer() == "A ton of party animals. Mos Einsley is old news."
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Pick your poison.",
+		new String[] {"Glyterrill","Death Sticks","Rhyll"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+
+rule "Q13_MALASTARE"
+	when Answer(
+		d:dialog, d.getQuestion == "Pick your poison."
+		&& getDialogAnswer() == "Glyterrill"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MALASTARE",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q13_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "Pick your poison."
+		&& getDialogAnswer() == "Death Sticks"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n CORUSCANT",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q13_RYLOTH"
+	when Answer(
+		d:dialog, d.getQuestion == "Pick your poison."
+		&& getDialogAnswer() == "Rhyll"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n RYLOTH",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q14"
+	when Answer(
+		d:dialog, d.getQuestion == "Describe your friends."
+		&& getDialogAnswer() == "Tight-knit. i'd do anything for them."
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"How do you spend your time together?",
+		new String[] {"Playing video games",
+		 "Long talks",
+		  "Eat sushi"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q14_RYLOTH"
+	when Answer(
+		d:dialog, d.getQuestion == "How do you spend your time together?"
+		&& getDialogAnswer() == "Playing video games"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n RYLOTH",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q14_NABOO"
+	when Answer(
+		d:dialog, d.getQuestion == "How do you spend your time together?"
+		&& getDialogAnswer() == "Long talks"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n NABOO",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q14_MONCALA"
+	when Answer(
+		d:dialog, d.getQuestion == "How do you spend your time together?"
+		&& getDialogAnswer() == "Eat sushi"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MON CALA",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q12"
+	when Answer(
+		d:dialog, d.getQuestion == "Are you social?"
+		&& getDialogAnswer() == "I prefer animals over people"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Choose an animal.",
+		new String[] {"Squid","Bear"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q12_MONCALA"
+	when Answer(
+		d:dialog, d.getQuestion == "Choose an animal."
+		&& getDialogAnswer() == "Squid"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MON CALA",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q12_ENDOR"
+	when Answer(
+		d:dialog, d.getQuestion == "Choose an animal."
+		&& getDialogAnswer() == "Bear"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n ENDOR",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q3_MONCALA"
+	when Answer(
+		d:dialog,d.getQuestion == "Sounds like you need to commune with nature." &&
+		getDialogAnswer() == "OK but I'm not sleeping outside, rigth"
+		)
+	then
+	Dialog td = new Dialog(
+		"Your destination is:\n MON CALA",
+		new String[] {"OK"}
+	);
+	String ta = window.askUser(td.getQuestion(),td.getAnswers());
+	insert(new Answer(td,ta));
+end
+
+rule "Q3_ENDOR"
+	when Answer(
+		d:dialog,d.getQuestion == "Sounds like you need to commune with nature." &&
+		getDialogAnswer() == "Yes"
+		)
+	then
+	Dialog td = new Dialog(
+		"Your destination is:\n ENDOR",
+		new String[] {"OK"}
+	);
+	String ta = window.askUser(td.getQuestion(),td.getAnswers());
+	insert(new Answer(td,ta));
+end
+
+rule "Q16"
+	when Answer(
+		d:dialog, d.getQuestion == "What line of work are you in?"
+		&& getDialogAnswer() == "Business"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Who would you never do buisness with",
+		new String[] {"Alderaan","A talking squid","Dugs or Toydarians"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q15"
+	when Answer(
+		d:dialog, d.getQuestion == "Who would you never do buisness with"
+		&& getDialogAnswer() == "Alderaan"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Aw, too soon?",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q15_NABOO"
+	when Answer(
+		d:dialog, d.getQuestion =="Aw, too soon?"
+		&& getDialogAnswer() == "OK"
+	)
+	then
+	Dialog td = new Dialog(
+		"Your destination is:\n NABOO",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(td.getQuestion(), td.getAnswers());
+	insert(new Answer(td,userAnswer));
+end
+
+rule "Q15_MUSTAFAR"
+	when Answer(
+		d:dialog, d.getQuestion == "Who would you never do buisness with"
+		&& getDialogAnswer() == "A talking squid"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MUSTAFAR",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q15_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "Who would you never do buisness with"
+		&& getDialogAnswer() == "Dugs or Toydarians"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n CORUSCANT",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q45"
+	when Answer(
+		d:dialog, d.getQuestion == "What line of work are you in?"
+		&& getDialogAnswer() == "Retail"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Whats's the one thing you can't travel without?",
+		new String[] {"A GoPro",
+		"My brand-new hologram cell phone","My camera"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q45_MUSTAFAR"
+	when Answer(
+		d:dialog, d.getQuestion == "Whats's the one thing you can't travel without?"
+		&& getDialogAnswer() == "A GoPro"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n MUSTAFAR",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q45_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "Whats's the one thing you can't travel without?"
+		&& getDialogAnswer() == "My brand-new hologram cell phone"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n CORUSCANT",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q45_RYLOTH"
+	when Answer(
+		d:dialog, d.getQuestion == "Whats's the one thing you can't travel without?"
+		&& getDialogAnswer() == "My camera"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destination is:\n RYLOTH",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q43"
+	when Answer(
+		d:dialog, d.getQuestion == "What line of work are you in?"
+		&& getDialogAnswer() == "Creative field"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"What are you more inspired by?",
+		new String[] {"Great artists before me", "Posters with eagles and inspirational quotes"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+
+
+
+
+rule "Q19"
+	when Answer(
+		d:dialog, d.getQuestion == "Mentally or physically?"
+		&& getDialogAnswer() == "Mentally"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Beware. Anger, fear, aggression. The Dark Side are they.",
+		new String[] {"I am the Dark Side.","Help me Obi-Wan Kenobi!"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q19_YOU"
+	when Answer(
+		d:dialog, d.getQuestion =="Beware. Anger, fear, aggression. The Dark Side are they."
+		&& getDialogAnswer() == "I am the Dark Side."
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"You don't need a vacation. The Force will set you free.",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q20"
+	when Answer(
+		d:dialog, d.getQuestion == "Beware. Anger, fear, aggression. The Dark Side are they."
+		&& getDialogAnswer() == "Help me Obi-Wan Kenobi!"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Clear your mind you must. How do you unwind?",
+		new String[] {"Oil baths","Braid my hair","Listen to music","Sports"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q20_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "Clear your mind you must. How do you unwind?"
+		&& getDialogAnswer() == "Oil baths"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nCoruscant",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q20_ENDOR"
+	when Answer(
+		d:dialog, d.getQuestion == "Clear your mind you must. How do you unwind?"
+		&& getDialogAnswer() == "Braid my hair"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nEndor",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q21"
+	when Answer(
+		d:dialog, d.getQuestion == "Clear your mind you must. How do you unwind?"
+		&& getDialogAnswer() == "Listen to music"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"What type?",
+		new String[] {"Instrumental","Rock","Pop"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q22"
+	when Answer(
+		d:dialog, d.getQuestion == "What type?"
+		&& getDialogAnswer() == "Instrumental"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Jhon Williams or Danny Elfman?",
+		new String[] {"Jhon Williams","Danny Elfman"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q22_ENDOR"
+	when Answer(
+		d:dialog, d.getQuestion == "Jhon Williams or Danny Elfman?"
+		&& getDialogAnswer() == "Jhon Williams"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nEndor",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q22_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "Jhon Williams or Danny Elfman?"
+		&& getDialogAnswer() == "Danny Elfman"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nCoruscant",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q21_MALASTARE"
+	when Answer(
+		d:dialog, d.getQuestion == "What type?"
+		&& getDialogAnswer() == "Rock"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nMalastare",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q21_CORUSCANT"
+	when Answer(
+		d:dialog, d.getQuestion == "What type?"
+		&& getDialogAnswer() == "Pop"
+	)
+	then
+		Dialog tempDialog = new Dialog(
+		"Your destinations is:\nCoruscant",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q24"
+	when Answer(
+		d:dialog, d.getQuestion == "Clear your mind you must. How do you unwind?"
+		&& getDialogAnswer() == "Sports"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Do you play or watch?",
+		new String[] {"Play","Watch"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q24_JAKKU"
+	when Answer(
+		d:dialog, d.getQuestion == "Do you play or watch?"
+		&& getDialogAnswer() == "Watch"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destinations is:\nJakku",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q29"
+	when Answer(
+		d:dialog, d.getQuestion == "Do you play or watch?"
+		&& getDialogAnswer() == "Play"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Podracers or lavaracers?",
+		new String[] {"Podracers","Lavaracers"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q29_MALASTARE"
+	when Answer(
+		d:dialog, d.getQuestion == "Podracers or lavaracers?"
+		&& getDialogAnswer() == "Podracers"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destinations is:\nMalastare",
+		new String[] {"OK"}
+	);
+	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
+	insert(new Answer(tempDialog,userAnswer));
+end
+
+rule "Q29_MUSTAFAR"
+	when Answer(
+		d:dialog, d.getQuestion == "Podracers or lavaracers?"
+		&& getDialogAnswer() == "Lavaracers"
+	)
+	then
+	Dialog tempDialog = new Dialog(
+		"Your destinations is:\nMustafar",
 		new String[] {"OK"}
 	);
 	String userAnswer = window.askUser(tempDialog.getQuestion(), tempDialog.getAnswers());
